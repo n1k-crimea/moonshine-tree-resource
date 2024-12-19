@@ -4,11 +4,11 @@
         x-data="{tree_show_all: $persist(true).as('tree_resource_all')}"
         @endif
     >
-        @if($resource->wrapable())
-        <a @click.stop="tree_show_all = !tree_show_all">
-            <x-moonshine::icon icon="heroicons.chevron-up-down" />
-        </a>
-        @endif
+{{--        @if($resource->wrapable())--}}
+{{--        <a @click.stop="tree_show_all = !tree_show_all">--}}
+{{--            <x-moonshine::icon icon="heroicons.chevron-up-down" />--}}
+{{--        </a>--}}
+{{--        @endif--}}
 
         <ul @if($resource->sortable())
                 x-data="sortable('{{ $route }}', 'nested')"
