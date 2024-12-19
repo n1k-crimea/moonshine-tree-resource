@@ -54,7 +54,7 @@ final class TreeComponent extends MoonshineComponent
 
                 return ActionButtons::make([
                     ...$resource->getIndexButtons(),
-                    DetailButton::for($resource)->icon('heroicons.outline.bars-4')->info(),
+                    DetailButton::for($resource)->icon('heroicons.outline.bars-4')->info()->canSee(fn($item) => !is_null($item->parent_id)),
                     EditButton::for($resource, 'tree'),
                     DeleteButton::for($resource, 'tree')->withConfirm(
                         "Удаление категории",
