@@ -1,16 +1,17 @@
 @if(!empty($items[0]))
     <div
-        @if($resource->wrapable())
+        {{--@if($resource->wrapable())--}}
         x-data="{tree_show_all: $persist(true).as('tree_resource_all')}"
-        @endif
+        {{--@endif--}}
     >
-{{--        @if($resource->wrapable())--}}
-{{--        <a @click.stop="tree_show_all = !tree_show_all">--}}
-{{--            <x-moonshine::icon icon="heroicons.chevron-up-down" />--}}
-{{--        </a>--}}
-{{--        @endif--}}
+        {{--@if($resource->wrapable())--}}
+        {{--<a @click.stop="tree_show_all = !tree_show_all">--}}
+        {{--<x-moonshine::icon icon="heroicons.chevron-up-down" />--}}
+        {{--</a>--}}
+        {{--@endif--}}
 
-        <ul @if($resource->sortable())
+        <ul
+            @if($resource->sortable())
                 x-data="sortable('{{ $route }}', 'nested')"
                 data-id=""
                 x-show="tree_show_all"
