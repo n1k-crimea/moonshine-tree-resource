@@ -54,7 +54,10 @@ final class TreeComponent extends MoonshineComponent
 
                 return ActionButtons::make([
                     ...$resource->getIndexButtons(),
-                    DetailButton::for($resource)->icon('heroicons.outline.bars-4')->info()->canSee(fn($item) => !is_null($item->parent_id)),
+                    DetailButton::for($resource)
+                        ->icon('heroicons.outline.bars-4')->info()->canSee(
+                            fn($item) => !is_null($item->parent_id) && $this->getResource() instanceof \App\MoonShine\Resources\CatalogRuDeviceResource
+                        ),
                     EditButton::for($resource, 'tree'),
                     DeleteButton::for($resource, 'tree'),
                 ])->fillItem($item);
