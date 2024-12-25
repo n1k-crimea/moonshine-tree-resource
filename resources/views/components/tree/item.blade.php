@@ -12,18 +12,27 @@
 >
     <x-moonshine::box>
         <div class="flex justify-between items-center gap-4">
-            <div class="@if($resource->sortable()) handle cursor-pointer @endif flex justify-start items-center gap-4">
+            <div class="@if($resource->sortable()) handle @endif flex justify-start items-center gap-4">
                 @if($resource->sortable())
-                    <x-moonshine::icon icon="heroicons.arrows-up-down" />
+                    <x-moonshine::icon class="cursor-pointer" icon="heroicons.arrows-up-down" />
+                @endif
+                @if($item->parent_id === null)
+                    <div class="font-bold">
+                        {{--<x-moonshine::badge color="purple">{{ $item->getKey() }}</x-moonshine::badge>--}}
+                        {{ $item->{$resource->column()} }}
+                    </div>
+                @else
+                    <div class="font-bold">
+                        <a href="{{{to_page(page: $resource->detailPage(), resource: $resource, params: ['resourceItem' => $item->getKey()])}}}">
+                            <span style="color:rgb(0 121 255)">
+                                {{ $item->{$resource->column()} }}
+                            </span>
+                        </a>
+                    </div>
                 @endif
 
-                <div class="font-bold">
-                    {{--<x-moonshine::badge color="purple">{{ $item->getKey() }}</x-moonshine::badge>--}}
-                    {{ $item->{$resource->column()} }}
-                </div>
-
                 @if($resource->wrapable() && $item->parent_id === null)
-                    <a @click.stop="tree_show_{{ $item->getKey() }} = !tree_show_{{ $item->getKey() }}">
+                    <a class="cursor-pointer" @click.stop="tree_show_{{ $item->getKey() }} = !tree_show_{{ $item->getKey() }}">
                         <x-moonshine::icon icon="heroicons.arrow-down-on-square" />
                     </a>
                 @endif
@@ -41,13 +50,13 @@
             <ul
                 @if($resource->sortable())
                     x-data="sortable('{{ $resource->route('sortable') }}', 'nested')"
-                    class="dropzone my-4"
-                    x-show="tree_show_{{ $item->getKey() }}"
-                    data-id="{{ $item->getKey() }}"
-                    data-handle=".handle"
-                    data-animation="150"
-                    data-fallbackOnBody="true"
-                    data-swapThreshold="0.65"
+                class="dropzone my-4"
+                x-show="tree_show_{{ $item->getKey() }}"
+                data-id="{{ $item->getKey() }}"
+                data-handle=".handle"
+                data-animation="150"
+                data-fallbackOnBody="true"
+                data-swapThreshold="0.65"
                 @endif
             >
 
