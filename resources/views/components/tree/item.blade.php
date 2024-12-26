@@ -16,7 +16,8 @@
                 @if($resource->sortable())
                     <x-moonshine::icon class="cursor-pointer" icon="heroicons.arrows-up-down" />
                 @endif
-                @if($item->parent_id === null)
+                {{--                @dd($item instanceof App\MoonShine\Resources\CatalogRuSoftwareResource)--}}
+                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)
                     <div class="font-bold">
                         {{--<x-moonshine::badge color="purple">{{ $item->getKey() }}</x-moonshine::badge>--}}
                         {{ $item->{$resource->column()} }}
@@ -31,7 +32,7 @@
                     </div>
                 @endif
 
-                @if($resource->wrapable() && $item->parent_id === null)
+                @if($resource->wrapable() && $item->parent_id == null)
                     <a class="cursor-pointer" @click.stop="tree_show_{{ $item->getKey() }} = !tree_show_{{ $item->getKey() }}">
                         <x-moonshine::icon icon="heroicons.arrow-down-on-square" />
                     </a>
@@ -46,7 +47,7 @@
                 />
             </div>
         </div>
-        @if($resource->treeKey() && $item->parent_id === null)
+        @if($resource->treeKey() && $item->parent_id == null)
             <ul
                 @if($resource->sortable())
                     x-data="sortable('{{ $resource->route('sortable') }}', 'nested')"
