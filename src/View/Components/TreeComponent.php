@@ -59,7 +59,9 @@ final class TreeComponent extends MoonshineComponent
                             fn($item) => !is_null($item->parent_id) && $this->getResource() instanceof \App\MoonShine\Resources\CatalogRuDeviceResource
                         ),
                     EditButton::for($resource, 'tree'),
-                    DeleteButton::for($resource, 'tree'),
+                    DeleteButton::for($resource, 'tree')->onClick(fn ($item) => "setTimeout(function() {
+    location.reload();
+}, 2000);", 'prevent'),
                 ])->fillItem($item);
             }
         ];
