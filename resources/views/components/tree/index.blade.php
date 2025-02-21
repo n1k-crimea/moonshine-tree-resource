@@ -1,5 +1,6 @@
 @if(!empty($items[0]))
     <div
+        class="tree"
         {{--@if($resource->wrapable())--}}
         x-data="{tree_show_all: $persist(true).as('tree_resource_all')}"
         {{--@endif--}}
@@ -11,6 +12,7 @@
         {{--@endif--}}
 
         <ul
+            class="treelist"
             @if($resource->sortable())
                 x-data="sortable('{{ $route }}', 'nested')"
                 data-id=""

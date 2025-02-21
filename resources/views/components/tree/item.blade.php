@@ -4,7 +4,7 @@
     'items',
     'buttons',
 ])
-<li class="my-4"
+<li
     data-id="{{ $item->getKey() }}"
     {{--@if($resource->wrapable())--}}
     x-data="{tree_show_{{ $item->getKey() }}: $persist(true).as('tree_resource_{{ $item->getKey() }}')}"
@@ -51,7 +51,7 @@
             <ul
                 @if($resource->sortable())
                     x-data="sortable('{{ $resource->route('sortable') }}', 'nested')"
-                class="dropzone my-4"
+                class="dropzone"
                 x-show="tree_show_{{ $item->getKey() }}"
                 data-id="{{ $item->getKey() }}"
                 data-handle=".handle"
