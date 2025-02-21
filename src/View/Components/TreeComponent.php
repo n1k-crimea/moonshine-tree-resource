@@ -58,7 +58,7 @@ final class TreeComponent extends MoonshineComponent
                         ->icon('heroicons.outline.bars-4')->info()->canSee(
                             fn($item) => !is_null($item->parent_id) && $this->getResource() instanceof \App\MoonShine\Resources\CatalogRuDeviceResource
                         ),
-                    EditButton::for($resource, 'tree')->success(),
+                    EditButton::for($resource, 'tree'),
                     DeleteButton::for($resource, 'tree')->onClick(fn ($item) => "setTimeout(function() {
                         location.reload();
                     }, 2000);", 'prevent'),
