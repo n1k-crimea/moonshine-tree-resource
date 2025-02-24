@@ -16,6 +16,9 @@
                 @if($resource->sortable())
                     <x-moonshine::icon class="cursor-pointer" icon="heroicons.arrows-up-down" />
                 @endif
+                @if($item->publish)
+                    <x-moonshine::icon icon="heroicons.outline.check-circle" />
+                @endif
                 {{--                @dd($item instanceof App\MoonShine\Resources\CatalogRuSoftwareResource)--}}
                 @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)
                     <div class="font-bold">
