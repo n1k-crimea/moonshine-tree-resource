@@ -19,15 +19,15 @@
                 @if($item->publish)
                     <x-moonshine::icon icon="heroicons.outline.check-circle" />
                 @endif
-                {{--                @dd($item instanceof App\MoonShine\Resources\CatalogRuSoftwareResource)--}}
-                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)
+                {{--                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)--}}
+                @if(false)
                     <div class="font-bold">
                         {{--<x-moonshine::badge color="purple">{{ $item->getKey() }}</x-moonshine::badge>--}}
                         {{ $item->{$resource->column()} }}
                     </div>
                 @else
                     <div class="font-bold">
-                        <a href="{{{to_page(page: $resource->detailPage(), resource: $resource, params: ['resourceItem' => $item->getKey()])}}}">
+                        <a href="{{{to_page(page: $resource->formPage(), resource: $resource, params: ['resourceItem' => $item->getKey()])}}}">
                             <span style="color:rgb(0 121 255)">
                                 {{ $item->{$resource->column()} }}
                             </span>
