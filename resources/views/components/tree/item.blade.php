@@ -36,7 +36,7 @@
                 @endif
 
                 @if($resource->wrapable() && $item->parent_id == null)
-                    <a class="cursor-pointer" @click.stop="tree_show_{{ $item->getKey() }} = !tree_show_{{ $item->getKey() }}">
+                    <a aria-expanded={{count($item->childrens) > 0 ? "true" : "false"}} class="cursor-pointer" @click.stop="tree_show_{{ $item->getKey() }} = !tree_show_{{ $item->getKey() }}">
                         <x-moonshine::icon icon="heroicons.arrow-down-on-square" />
                     </a>
                 @endif
@@ -62,6 +62,7 @@
                 data-fallbackOnBody="true"
                 data-swapThreshold="0.65"
                 @endif
+                aria-hidden={{count($item->childrens) > 0 ? "false" : "true"}}
             >
 
                 @if(isset($items[$item->getKey()]))
