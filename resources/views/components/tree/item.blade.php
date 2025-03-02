@@ -35,7 +35,7 @@
                     </div>
                 @endif
 
-                @if($resource->wrapable() && $item->parent_id == null)
+                @if($resource->wrapable())
                     <a aria-expanded={{count($item->childrens) > 0 ? "true" : "false"}} class="cursor-pointer" @click.stop="tree_show_{{ $item->getKey() }} = !tree_show_{{ $item->getKey() }}">
                         <x-moonshine::icon icon="heroicons.arrow-down-on-square" />
                     </a>
@@ -50,7 +50,7 @@
                 />
             </div>
         </div>
-        @if($resource->treeKey() && $item->parent_id == null)
+        @if($resource->treeKey())
             <ul
                 @if($resource->sortable())
                     x-data="sortable('{{ $resource->route('sortable') }}', 'nested')"
