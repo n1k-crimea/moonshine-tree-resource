@@ -37,13 +37,14 @@
                     </div>
                 @endif
 
+                {!! $resource->itemContent($item) !!}
+
                 @if($resource->wrapable())
                     <a aria-expanded={{count($item->childrens) > 0 ? "true" : "false"}} aria-controls="tree-list-{{ $item->getKey() }}" class="cursor-pointer transition-transform aria-expanded:rotate-180">
                         <x-moonshine::icon icon="heroicons.chevron-down" />
                     </a>
                 @endif
 
-                {!! $resource->itemContent($item) !!}
             </div>
 
             <div class="flex justify-between items-center gap-4">
