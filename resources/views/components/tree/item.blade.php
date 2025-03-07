@@ -17,9 +17,9 @@
                     <x-moonshine::icon class="cursor-pointer" icon="heroicons.arrows-pointing-out" />
                 @endif
                 @if($item->publish)
-                    <x-moonshine::icon icon="heroicons.outline.check-circle" />
+                    <div class="h-4 w-4 rounded-full bg-green-500"></div>
                 @else
-                    <x-moonshine::icon icon="heroicons.no-symbol" />
+                    <div class="h-4 w-4 rounded-full bg-red-500"></div>
                 @endif
                 {{--                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)--}}
                 @if(false)
