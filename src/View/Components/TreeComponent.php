@@ -55,13 +55,16 @@ final class TreeComponent extends MoonshineComponent
                 return ActionButtons::make([
                     ...$resource->getIndexButtons(),
                     DetailButton::for($resource)
-                        ->icon('heroicons.outline.bars-4')->info()->canSee(
+                        ->icon('heroicons.outline.bars-4')->canSee(
                             fn($item) => !is_null($item->parent_id) && $this->getResource() instanceof \App\MoonShine\Resources\CatalogRuDeviceResource
                         ),
-                    EditButton::for($resource, 'tree'),
-                    DeleteButton::for($resource, 'tree')->onClick(fn ($item) => "setTimeout(function() {
-                        location.reload();
-                    }, 2000);", 'prevent'),
+                    EditButton::for($resource, 'tree')
+                        ->customAttributes(['class' => 'btn-outline-primary']),
+                    DeleteButton::for($resource, 'tree')
+                        ->customAttributes(['class' => 'btn-outline-error'])
+                        ->onClick(fn ($item) => "setTimeout(function() {
+                            location.reload();
+                        }, 2000);", 'prevent'),
                 ])->fillItem($item);
             }
         ];
