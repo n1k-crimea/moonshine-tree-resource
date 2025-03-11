@@ -25,7 +25,7 @@
 
                 {{--                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)--}}
 
-                <div class="flex justify-start items-center gap-4" >
+                <div class="@if($resource->sortable()) handle__title @endif flex justify-start items-center gap-4" >
                     @if(false)
                         <div>
                             {{--<x-moonshine::badge color="purple">{{ $item->getKey() }}</x-moonshine::badge>--}}
