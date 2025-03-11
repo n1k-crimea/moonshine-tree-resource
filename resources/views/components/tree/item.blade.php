@@ -12,7 +12,7 @@
 >
     <x-moonshine::box class="shadow-none" >
         <div class="flex flex-wrap items-center justify-between gap-2">
-            <div class="@if($resource->sortable()) handle @endif flex justify-start items-center gap-2">
+            <div class="@if($resource->sortable()) handle @endif flex justify-start items-center gap-4">
                 @if($resource->sortable())
                     <x-moonshine::icon class="cursor-pointer" icon="heroicons.arrows-pointing-out" />
                 @endif
@@ -25,7 +25,7 @@
 
                 {{--                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)--}}
 
-                <div class="flex justify-start items-center gap-2" >
+                <div class="flex justify-start items-center gap-4" >
                     @if(false)
                         <div>
                             {{--<x-moonshine::badge color="purple">{{ $item->getKey() }}</x-moonshine::badge>--}}
