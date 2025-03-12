@@ -18,9 +18,9 @@
                 @endif
 
                 @if($item->publish)
-                    <div class="h-4 w-4 rounded-full bg-green-500"></div>
+                    <div class="h-4 w-4 rounded-full bg-green-500" title="Опубликовано" ></div>
                 @else
-                    <div class="h-4 w-4 rounded-full bg-red-500"></div>
+                    <div class="h-4 w-4 rounded-full bg-red-500" title="Не опубликовано" ></div>
                 @endif
 
                 {{--                @if($item->parent_id == null || $item instanceof App\Models\CatalogRuSoftware || $item instanceof App\Models\CatalogOtherDevice)--}}
