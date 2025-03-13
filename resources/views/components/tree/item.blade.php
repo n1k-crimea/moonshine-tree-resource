@@ -55,34 +55,35 @@
                 />
             </div>
         </div>
-        @if($resource->treeKey())
-            <ul
-                @if($resource->sortable())
-                    x-data="sortable('{{ $resource->route('sortable') }}', 'nested')"
-                class="dropzone aria-hidden:hidden"
-                x-show="tree_show_{{ $item->getKey() }}"
-                data-id="{{ $item->getKey() }}"
-                data-handle=".handle"
-                data-animation="150"
-                data-fallbackOnBody="true"
-                data-swapThreshold="0.65"
-                data-content="Область для перетаскивания"
-                @endif
-                id="tree-list-{{ $item->getKey() }}"
-                aria-hidden={{count($item->childrens) > 0 ? "false" : "true"}}
-            >
-
-                @if(isset($items[$item->getKey()]))
-                    @foreach($items[$item->getKey()] as $inner)
-                        <x-moonshine-tree::tree.item
-                            :items="$items"
-                            :item="$inner"
-                            :resource="$resource"
-                            :buttons="$buttons"
-                        />
-                    @endforeach
-                @endif
-            </ul>
-        @endif
     </x-moonshine::box>
+
+    @if($resource->treeKey())
+        <ul
+            @if($resource->sortable())
+                x-data="sortable('{{ $resource->route('sortable') }}', 'nested')"
+            class="dropzone aria-hidden:hidden"
+            x-show="tree_show_{{ $item->getKey() }}"
+            data-id="{{ $item->getKey() }}"
+            data-handle=".handle"
+            data-animation="150"
+            data-fallbackOnBody="true"
+            data-swapThreshold="0.65"
+            data-content="Область для перетаскивания"
+            @endif
+            id="tree-list-{{ $item->getKey() }}"
+            aria-hidden={{count($item->childrens) > 0 ? "false" : "true"}}
+        >
+
+            @if(isset($items[$item->getKey()]))
+                @foreach($items[$item->getKey()] as $inner)
+                    <x-moonshine-tree::tree.item
+                        :items="$items"
+                        :item="$inner"
+                        :resource="$resource"
+                        :buttons="$buttons"
+                    />
+                @endforeach
+            @endif
+        </ul>
+    @endif
 </li>
